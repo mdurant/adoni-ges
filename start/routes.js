@@ -21,7 +21,7 @@ Route.on('/').render('welcome')
 Route.group(() => {
 
     Route.post('login', 'AuthController.login');
-    Route.post('register', 'AuthController.register');
+    Route.post('register', 'AuthController.register').validator('StoreUser'); //No pasará por metodo register hasta aprobar validador
 
 }).prefix('api/v1');
 
