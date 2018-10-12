@@ -136,6 +136,8 @@ module.exports = {
         filterUris: [
             '/api/v1/register',
             '/api/v1/login',
+            'api/v1/books',
+            'api/v1/books/:id',
         ],
         cookieOptions: {
             httpOnly: false,
