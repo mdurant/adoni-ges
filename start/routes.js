@@ -23,8 +23,11 @@ Route.group(() => {
     Route.post('login', 'AuthController.login');
     Route.post('register', 'AuthController.register').validator('StoreUser'); //No pasará por metodo register hasta aprobar validador
 
-    Route.resource('books', 'BookController').middleware(['auth:api']); // Toda llamada a Books estará protegida por el middleware auth.api
-
+    Route.resource('books', 'BookController').middleware(['auth:api']) // Toda llamada a Books estará protegida por el middleware auth.api
+        .validator(new Map([
+            ['books.store', 'StoreBook'],
+            ['books.update', 'UpdateBook']
+        ]))
 }).prefix('api/v1');
 
 Route.group(() => {
