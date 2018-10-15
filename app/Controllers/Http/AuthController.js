@@ -13,7 +13,7 @@ class AuthController {
 
     async login({ request, response, auth }) {
         const { email, password } = request.all();
-        const user = await auth.attempt(email, password);
+        const user = await auth.attempt(email, password); //Metodo para limpiar sesion
         return response.json(user);
 
     }
@@ -25,10 +25,22 @@ class AuthController {
         user.password = request.input('password');
 
         await user.save(); // Guardar
-        //await auth.generate(user); //Generar usuario y generar Token
+        await auth.generate(user); //Generar usuario y generar Token
 
+        return response.status(200).json(user);
+
+    }
+
+    async profile({ auth, response }) {
+        const user = await auth.getUser();
         return response.json(user);
+    }
 
+    async revokeUserToken({ auth, response }) {
+        const user = await auth.getUser();
+        await user.tokens().update({ is_revoked: true });
+
+        return response.status(204).json(null);
     }
 }
 

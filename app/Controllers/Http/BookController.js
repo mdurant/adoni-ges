@@ -45,7 +45,15 @@ class BookController {
      * @param {Request} ctx.request
      * @param {Response} ctx.response
      */
-    async store({ request, response }) {}
+    async store({ request, response }) {
+        const bookInfo = request.only(['title', 'isbn', 'author']);
+        const book = new Book;
+        book.title = bookInfo.title;
+        book.isbn = bookInfo.isbn;
+        book.author = bookInfo.author;
+        await book.save();
+        return response.status(201).json(book);
+    }
 
     /**
      * Display a single book.

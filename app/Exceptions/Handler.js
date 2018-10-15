@@ -21,7 +21,9 @@ class ExceptionHandler extends BaseExceptionHandler {
      * @return {void}
      */
     async handle(error, { request, response }) {
-        response.status(error.status).json({ msg: error.message })
+        response.status(error.status).json({ msg: error.message }) //Se envia error controlado en JSON y NO como send para evitar mucha información a los usuarios
+
+        //response.status(error.status).send(error.message);
     }
 
     /**
