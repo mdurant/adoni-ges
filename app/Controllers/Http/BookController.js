@@ -55,6 +55,18 @@ class BookController {
 
         return response.status(204).json({ data: "Recurso ha sido eliminado" });
     }
+    async paginated({ response, params }) {
+        const books = await Book.query()
+            .orderBy('id', 'desc')
+            .paginate(params.offset, 2);
+
+        if (!books) {
+            return response.status(404).json({ data: "Recurso no encontrado" });
+        }
+
+        return response.status(200).json(books);
+    }
+
 }
 
 module.exports = BookController

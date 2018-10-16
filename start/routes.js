@@ -32,7 +32,7 @@ Route.group(() => {
             ['books.store', 'StoreBook'],
             ['books.update', 'UpdateBook'],
         ]))
-
+    Route.get("books/paginated/:offset", 'BookController.paginated').middleware(['auth:api']);
 }).prefix('api/v1');
 
 
@@ -41,7 +41,5 @@ Route.group(() => {
         .validator(new Map([
             ['books.store', 'StoreBook'],
             ['books.update', 'UpdateBook'],
-        ]));
-
-    Route.get("books/paginated/:offset", 'V2/BookController.paginated').middleware(['auth:api']);
+        ]))
 }).prefix('api/v2');
