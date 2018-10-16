@@ -32,7 +32,7 @@ class AuthController {
     }
 
     async profile({ auth, response }) {
-        const user = await auth.getUser();
+        const user = await auth.getUser(); //Obtener usuario por token
         return response.json(user);
     }
 

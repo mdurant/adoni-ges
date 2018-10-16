@@ -19,7 +19,7 @@ class BookController {
     }
 
     async show({ response, params }) {
-        const book = await Book.find(params.id);
+        const book = await Book.find(params.id); //Comprobamos el Book por el ID
 
         if (!book) {
             return response.status(404).json({ data: "Recurso no encontrado" });
@@ -53,7 +53,7 @@ class BookController {
 
         await book.delete();
 
-        return response.status(204).json(null);
+        return response.status(204).json({ data: "Recurso ha sido eliminado" });
     }
 }
 
