@@ -2,26 +2,23 @@
 
 class UpdateBook {
     get rules() {
-        const bookId = this.ctx.params.id; //se accede al ID del libro para editar
+        const bookId = this.ctx.params.id;
         return {
-            // validation rules
-            // tiene que ser con comillas ´ ´
-            title: 'required|unique:books, title,id, ${bookId}',
-            isbn: 'required|unique:books,isbn,id,$ { bookId }', //requerido, unico en la tabla users con el campo email
+            title: `required|unique:books,title,id,${bookId}`,
+            isbn: `required|unique:books,isbn,id,${bookId}`,
             author: 'required'
         }
     }
 
     get messages() {
         return {
-            // validation rules
-            'title.required': 'El campo Título es requerido',
+            'title.required': 'El campo título  es requerido',
             'title.unique': 'El título ya existe!',
-            'isbn.required': 'El campo ISBN es requerido', //requerido, unico en la tabla users con el campo email
-            'isbn.unique': 'El ISBN ya existe!',
-            'author.required': 'El campo Autor es requerido'
+            'isbn.required': 'El campo isbn es requerido',
+            'isbn.unique': 'El isbn ya existe!',
+            'author.required': 'El author es requerido'
         }
     }
 }
 
-module.exports = UpdateBook,
+module.exports = UpdateBook

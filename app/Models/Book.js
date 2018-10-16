@@ -7,6 +7,11 @@ class Book extends Model {
     static get visible() {
         return ['title', 'isbn', 'author', 'created_at'];
     }
+
+    static castDates(field, value) {
+        return value.format('DD/MM/YYYY HH:mm:ss');
+    }
+
 }
 
 module.exports = Book
