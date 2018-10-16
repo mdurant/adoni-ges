@@ -11,13 +11,20 @@ This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
 7. Lucid ORM
 8. Migrations and seeds
 
-## Setup
+## Setup Example
+## How to
 
-Use the adonis command to install the blueprint
+Clone repository: git clone https://github.com/mdurant/adonis-ges.git
 
-```bash
-adonis new yardstick
-```
+Enter the folder: cd adonis-ges
+
+Install dependencies: npm install
+
+# Create Database "adonis"
+
+Run server: npm run serve:dev
+
+Access the url in the browser: http://localhost:3333
 
 or manually clone the repo and then run `npm install`.
 
